@@ -23,8 +23,6 @@ Este projeto é uma API RESTful desenvolvida com o NestJS e integrada ao MongoDB
 
 - _Pré-requisitos_
   Node.js instalado (versão 14 ou superior).
-  MongoDB rodando localmente ou acessível através de uma conexão remota.
-  NestJS CLI para facilitar a execução dos comandos (instalação opcional, mas recomendada).
 
 - _Passos para Instalar e Rodar_
 

@@ -1,10 +1,8 @@
-// App.tsx
 import React, {useState, useEffect} from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 import {View, ActivityIndicator} from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import axios from 'axios';
 import ContactsScreen from './src/screens/ContactsScreen';
 import AddEditContactScreen from './src/screens/AddEditContactScreen';
 import LoginScreen from './src/screens/LoginScreen';

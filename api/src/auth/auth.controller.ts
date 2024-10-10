@@ -7,7 +7,10 @@ export class AuthController {
 
   @Post('login')
   async login(@Body() req) {
-    const user = await this.authService.validateUser(req.username, req.password);
+    const user = await this.authService.validateUser(
+      req.username,
+      req.password,
+    );
     if (!user) {
       return { message: 'Credenciais inválidas!' };
     }

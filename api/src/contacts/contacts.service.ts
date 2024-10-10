@@ -10,22 +10,23 @@ export class ContactsService {
   ) {}
 
   async findAll(): Promise<Contact[]> {
-    return this.contactModel.find().exec();  // Retorna todos os contatos do MongoDB
+    return this.contactModel.find().exec(); // Retorna todos os contatos
   }
 
   async create(contact: Contact): Promise<Contact> {
     const newContact = new this.contactModel(contact);
-    return newContact.save();  // Salva o novo contato no MongoDB
+    return newContact.save(); // Salva o novo contato
   }
 
   async update(id: string, updatedContact: Partial<Contact>): Promise<Contact> {
-    return this.contactModel.findByIdAndUpdate(id, updatedContact, {
-      new: true,
-    }).exec();  // Atualiza o contato existente
+    return this.contactModel
+      .findByIdAndUpdate(id, updatedContact, {
+        new: true,
+      })
+      .exec(); // Atualiza o contato existente
   }
 
   async delete(id: string): Promise<Contact> {
-    return this.contactModel.findByIdAndDelete(id).exec();  // Deleta o contato pelo ID
+    return this.contactModel.findByIdAndDelete(id).exec(); // Deleta o contato pelo ID
   }
-
 }

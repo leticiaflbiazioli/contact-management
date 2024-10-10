@@ -1,6 +1,7 @@
 ## Aplicativo de Gestão de Contatos - Backend
 
-Este projeto é uma aplicação frontend desenvolvida em **React Native** para gerenciar contatos. A aplicação se conecta a uma API backend construída com **Node.js** e **NestJS**, permitindo que os usuários autentiquem-se e gerenciem seus contatos.
+Este projeto é uma aplicação frontend desenvolvida em React Native para gerenciar contatos. A aplicação se conecta a uma API backend construída com Node.js e NestJS, permitindo que os usuários autentiquem-se e gerenciem seus contatos.
+_Atenção_: como o backend está rodando em um servidor gratuito e limitado, a primeir requisição pode demorar um pouco mais pelo start-up da aplicação, mas as requisições seguintes já ocorrerão normalmente.
 
 ### Stack
 

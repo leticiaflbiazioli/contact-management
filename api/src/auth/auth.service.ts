@@ -8,7 +8,11 @@ export class AuthService {
 
   async validateUser(username: string, pass: string): Promise<any> {
     // Em um cenário real, buscaria o usuário no banco de dados
-    const mockUser = { id: 1, username: 'usuario', password: await bcrypt.hash('senha123', 10) };
+    const mockUser = {
+      id: 1,
+      username: 'usuario',
+      password: await bcrypt.hash('senha123', 10),
+    };
 
     const isPasswordValid = await bcrypt.compare(pass, mockUser.password);
     if (mockUser && isPasswordValid) {
