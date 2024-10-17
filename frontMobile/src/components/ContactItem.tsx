@@ -5,9 +5,9 @@ export default function ContactItem({contact, onDelete, onEdit}: any) {
   return (
     <View style={styles.container}>
       <Text style={styles.text}>
-        {contact.nome} {contact.sobrenome}
+        {contact.name} {contact.surname}
       </Text>
-      <Text style={styles.text}>{contact.telefone}</Text>
+      <Text style={styles.text}>{contact.phone}</Text>
       <Text style={styles.text}>{contact.email}</Text>
       <Button title="Editar" onPress={onEdit} color="#000080" />
       <Button title="Excluir" onPress={onDelete} color="#FF4500" />

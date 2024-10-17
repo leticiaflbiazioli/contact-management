@@ -10,8 +10,8 @@ import {Contact} from './src/types';
 
 export type RootStackParamList = {
   Login: undefined;
-  'Lista de contatos': undefined;
-  'Adicionar ou editar contato': {contact?: Contact} | undefined;
+  'Lista de contacts': undefined;
+  'Adicionar ou editar contact': {contact?: Contact} | undefined;
 };
 
 const Stack = createStackNavigator<RootStackParamList>();
@@ -51,7 +51,7 @@ const App: React.FC = () => {
       <Stack.Navigator>
         {isAuthenticated ? (
           <>
-            <Stack.Screen name="Lista de contatos">
+            <Stack.Screen name="Lista de contacts">
               {props => (
                 <ContactsScreen
                   {...props}
@@ -59,7 +59,7 @@ const App: React.FC = () => {
                 />
               )}
             </Stack.Screen>
-            <Stack.Screen name="Adicionar ou editar contato">
+            <Stack.Screen name="Adicionar ou editar contact">
               {props => (
                 <AddEditContactScreen
                   {...props}

@@ -6,19 +6,19 @@ export type ContactDocument = Contact & Document;
 @Schema()
 export class Contact {
   @Prop({ required: true })
-  nome: string;
+  name: string;
 
   @Prop({ required: true })
-  sobrenome: string;
+  surname: string;
 
   @Prop({ required: true })
-  telefone: string;
+  phone: string;
 
   @Prop({ required: true })
-  dataNascimento: string;
+  birthDate: string;
 
   @Prop({ required: true })
-  endereco: string;
+  address: string;
 
   @Prop({ required: true })
   email: string;

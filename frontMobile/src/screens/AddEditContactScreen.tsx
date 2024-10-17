@@ -11,11 +11,11 @@ import {API_URL} from '../../config';
 
 type AddEditContactScreenNavigationProp = StackNavigationProp<
   RootStackParamList,
-  'Adicionar ou editar contato'
+  'Add or edit contact'
 >;
 type AddEditContactScreenRouteProp = RouteProp<
   RootStackParamList,
-  'Adicionar ou editar contato'
+  'Add or edit contact'
 >;
 
 interface AddEditContactScreenProps {
@@ -30,13 +30,13 @@ const AddEditContactScreen: React.FC<AddEditContactScreenProps> = ({
   setIsAuthenticated,
 }) => {
   const contact = route.params?.contact || ({} as Contact);
-  const [nome, setNome] = useState(contact.nome || '');
-  const [sobrenome, setSobrenome] = useState(contact.sobrenome || '');
-  const [telefone, setTelefone] = useState(contact.telefone || '');
-  const [dataNascimento, setDataNascimento] = useState(
-    contact.dataNascimento || '',
+  const [name, setName] = useState(contact.name || '');
+  const [surname, setSurname] = useState(contact.surname || '');
+  const [phone, setPhone] = useState(contact.phone || '');
+  const [birthDate, setBirthDate] = useState(
+    contact.birthDate || '',
   );
-  const [endereco, setEndereco] = useState(contact.endereco || '');
+  const [address, setAddress] = useState(contact.address || '');
   const [email, setEmail] = useState(contact.email || '');
 
   const isValidEmail = (email: string) => {
@@ -56,11 +56,11 @@ const AddEditContactScreen: React.FC<AddEditContactScreenProps> = ({
 
   const handleSave = async () => {
     if (
-      !nome ||
-      !sobrenome ||
-      !telefone ||
-      !dataNascimento ||
-      !endereco ||
+      !name ||
+      !surname ||
+      !phone ||
+      !birthDate ||
+      !address ||
       !email
     ) {
       Alert.alert('Erro', 'Todos os campos são obrigatórios!');
@@ -68,22 +68,22 @@ const AddEditContactScreen: React.FC<AddEditContactScreenProps> = ({
     }
 
     if (!isValidEmail(email)) {
-      Alert.alert('Erro', 'Email inválido!');
+      Alert.alert('Error', 'All fields are required!');
       return;
     }
 
-    if (!isValidPhoneNumber(telefone)) {
+    if (!isValidPhoneNumber(phone)) {
       Alert.alert(
-        'Erro',
-        'Telefone inválido! O formato deve ser (XX) XXXXX-XXXX.',
+        'Error',
+        'Invalid Phone! Format must be (XX)XXXX-XXXX.',
       );
       return;
     }
 
-    if (!isValidDate(dataNascimento)) {
+    if (!isValidDate(birthDate)) {
       Alert.alert(
         'Erro',
-        'Data de nascimento inválida! O formato deve ser DD/MM/YYYY.',
+        'Invalid date of birth! The format must be DD/MM/YYYY.',
       );
       return;
     }
@@ -91,15 +91,15 @@ const AddEditContactScreen: React.FC<AddEditContactScreenProps> = ({
     try {
       const authentication = await AsyncStorage.getItem('token');
       if (contact._id) {
-        // Editar contato
+        // Edit contact
         await axios.put(
-          `${API_URL}/contatos/${contact._id}`,
+          `${API_URL}/contacts/${contact._id}`,
           {
-            nome,
-            sobrenome,
-            telefone,
-            dataNascimento,
-            endereco,
+            name,
+            surname,
+            phone,
+            birthDate,
+            address,
             email,
           },
           {
@@ -110,15 +110,15 @@ const AddEditContactScreen: React.FC<AddEditContactScreenProps> = ({
           },
         );
       } else {
-        // Adicionar novo contato
+        // Add a new contact
         await axios.post(
-          `${API_URL}/contatos`,
+          `${API_URL}/contacts`,
           {
-            nome,
-            sobrenome,
-            telefone,
-            dataNascimento,
-            endereco,
+            name,
+            surname,
+            phone,
+            birthDate,
+            address,
             email,
           },
           {
@@ -139,16 +139,16 @@ const AddEditContactScreen: React.FC<AddEditContactScreenProps> = ({
   return (
     <View style={styles.container}>
       <TextInput
-        placeholder="Nome"
-        value={nome}
-        onChangeText={setNome}
+        placeholder="Name"
+        value={name}
+        onChangeText={setName}
         style={styles.input}
         textContentType="namePrefix"
       />
       <TextInput
-        placeholder="Sobrenome"
-        value={sobrenome}
-        onChangeText={setSobrenome}
+        placeholder="Surname"
+        value={surname}
+        onChangeText={setSurname}
         style={styles.input}
         textContentType="nameSuffix"
       />
@@ -157,9 +157,9 @@ const AddEditContactScreen: React.FC<AddEditContactScreenProps> = ({
         options={{
           mask: '(99) 99999-9999',
         }}
-        placeholder="Telefone"
-        value={telefone}
-        onChangeText={setTelefone}
+        placeholder="Phone"
+        value={phone}
+        onChangeText={setPhone}
         style={styles.input}
         keyboardType="phone-pad"
       />
@@ -168,16 +168,16 @@ const AddEditContactScreen: React.FC<AddEditContactScreenProps> = ({
         options={{
           mask: '99/99/9999',
         }}
-        placeholder="Data de Nascimento"
-        value={dataNascimento}
-        onChangeText={setDataNascimento}
+        placeholder="Date of Birth"
+        value={birthDate}
+        onChangeText={setBirthDate}
         style={styles.input}
         keyboardType="number-pad"
       />
       <TextInput
-        placeholder="Endereço"
-        value={endereco}
-        onChangeText={setEndereco}
+        placeholder="Adress"
+        value={address}
+        onChangeText={setAddress}
         style={styles.input}
       />
       <TextInput
@@ -189,7 +189,7 @@ const AddEditContactScreen: React.FC<AddEditContactScreenProps> = ({
         textContentType="emailAddress"
         keyboardType="email-address"
       />
-      <Button title="Salvar" onPress={handleSave} color="#144C77" />
+      <Button title="Save" onPress={handleSave} color="#144C77" />
     </View>
   );
 };

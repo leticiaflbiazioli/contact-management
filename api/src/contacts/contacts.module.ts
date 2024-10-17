@@ -11,4 +11,4 @@ import { Contact, ContactSchema } from 'src/schemas/contact.schema';
   providers: [ContactsService],
   controllers: [ContactsController],
 })
-export class ContatosModule {}
+export class ContactsModule {}

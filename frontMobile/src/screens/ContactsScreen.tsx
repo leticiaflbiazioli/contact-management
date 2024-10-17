@@ -9,7 +9,7 @@ import {API_URL} from '../../config';
 
 type ContactsScreenNavigationProp = StackNavigationProp<
   RootStackParamList,
-  'Lista de contatos'
+  'Lista de contacts'
 >;
 
 interface ContactsScreenProps {
@@ -26,7 +26,7 @@ const ContactsScreen: React.FC<ContactsScreenProps> = ({
   const fetchContacts = async () => {
     try {
       const authentication = await AsyncStorage.getItem('token');
-      const response = await axios.get(`${API_URL}/contatos`, {
+      const response = await axios.get(`${API_URL}/contacts`, {
         headers: {
           Authorization: `Bearer ${authentication}`,
           'Content-Type': 'application/json',
@@ -43,7 +43,7 @@ const ContactsScreen: React.FC<ContactsScreenProps> = ({
   const handleDelete = async (id: string) => {
     try {
       const authentication = await AsyncStorage.getItem('token');
-      await axios.delete(`${API_URL}/contatos/${id}`, {
+      await axios.delete(`${API_URL}/contacts/${id}`, {
         headers: {
           Authorization: `Bearer ${authentication}`,
           'Content-Type': 'application/json',
@@ -62,18 +62,18 @@ const ContactsScreen: React.FC<ContactsScreenProps> = ({
   const renderItem = ({item}: {item: Contact}) => (
     <View style={styles.contactItem}>
       <Text>
-        {item.nome} {item.sobrenome}
+        {item.name} {item.surname}
       </Text>
       <Button
-        title="Editar contato"
+        title="Edit contact"
         onPress={() =>
-          navigation.navigate('Adicionar ou editar contato', {contact: item})
+          navigation.navigate('Add or edit contact', {contact: item})
         }
         color="#FFA944"
       />
       {item._id && (
         <Button
-          title="Deletar contato"
+          title="Delete contact"
           onPress={() => handleDelete(item._id!)}
           color="#359CD7"
         />
@@ -89,8 +89,8 @@ const ContactsScreen: React.FC<ContactsScreenProps> = ({
         keyExtractor={item => item._id!}
       />
       <Button
-        title="Adicionar novo Contato"
-        onPress={() => navigation.navigate('Adicionar ou editar contato')}
+        title="Add a new Contact"
+        onPress={() => navigation.navigate('Add or edit contact')}
         color="#144C77"
       />
     </View>

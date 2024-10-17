@@ -22,22 +22,22 @@ const LoginScreen: React.FC<LoginScreenProps> = ({setIsAuthenticated}) => {
       await AsyncStorage.setItem('token', access_token);
       setIsAuthenticated(true);
     } catch (error) {
-      Alert.alert('Login falhou', 'Usuário ou senha inválidos');
+      Alert.alert('Login failed', 'Invalid username or password');
     }
   };
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Plataforma de controle de usuários</Text>
+      <Text style={styles.title}>User control platform</Text>
       <TextInput
-        placeholder="Usuário"
+        placeholder="User"
         value={username}
         onChangeText={setUsername}
         style={styles.input}
         autoCapitalize="none"
       />
       <TextInput
-        placeholder="Senha"
+        placeholder="Password"
         value={password}
         onChangeText={setPassword}
         style={styles.input}

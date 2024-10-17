@@ -12,7 +12,7 @@ export class AuthController {
       req.password,
     );
     if (!user) {
-      return { message: 'Credenciais inválidas!' };
+      return { message: 'Invalid credentials!' };
     }
     return this.authService.login(user);
   }

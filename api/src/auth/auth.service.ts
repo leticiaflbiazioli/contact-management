@@ -7,11 +7,11 @@ export class AuthService {
   constructor(private jwtService: JwtService) {}
 
   async validateUser(username: string, pass: string): Promise<any> {
-    // Em um cenário real, buscaria o usuário no banco de dados
+    // In a real scenario, I would search for the user in the database
     const mockUser = {
       id: 1,
-      username: 'usuario',
-      password: await bcrypt.hash('senha123', 10),
+      username: 'userlogin',
+      password: await bcrypt.hash('password123', 10),
     };
 
     const isPasswordValid = await bcrypt.compare(pass, mockUser.password);

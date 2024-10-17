@@ -1,17 +1,17 @@
-## Aplicativo de Gestão de Contatos - Backend
+## Contact Management App - Backend
 
-Este projeto é uma API RESTful desenvolvida com o NestJS e integrada ao MongoDB para gerenciamento de contatos de usuários. A API inclui rotas protegidas por autenticação JWT e permite a inserção, listagem, atualização e exclusão de contatos com informações básicas como nome, telefone e email.
+This project is a RESTful API developed with NestJS and integrated with MongoDB for managing user contacts. The API includes routes protected by JWT authentication and allows inserting, listing, updating, and deleting contacts with basic information like name, phone, and email.
 
 ### Funcionalidades Principais
 
 - _Autenticação JWT_:
-  Rota de login para autenticar usuários.
+  Login route to authenticate users.
 
-- _Gerenciamento de Contatos (CRUD):_
-  Inserção de novos contatos.
-  Listagem de todos os contatos cadastrados.
-  Atualização de contatos existentes.
-  Deleção de contatos
+- _Contact Management (CRUD):_
+  Insertion of new contacts.
+  Listing of all registered contacts.
+  Updating existing contacts.
+  Deletion of contacts.
 
 ### Stack
 
@@ -19,44 +19,45 @@ Este projeto é uma API RESTful desenvolvida com o NestJS e integrada ao MongoDB
 - MongoDB
 - Mongoose
 
-### Como Rodar o Projeto
+### How to Run the Project
 
-- _Pré-requisitos_
-  Node.js instalado (versão 14 ou superior).
+- _Prerequisites_
+  Node.js installed (version 14 or higher).
 
-- _Passos para Instalar e Rodar_
+- _Steps to Install and Run_
 
-1. Clone o repositório
-2. Crie o arquivo `.env` baseado no `.env.example` (o valor da connection-string lhe será enviada diretamente no email)
-3. Instale as dependências:
-   No diretório do projeto, execute:
-   `cd api`
+1. Clone the repository
+
+2. Create the `.env` file based on `.env.example` (the keys can be sent to you by email, just request it by contacting lelima89@hotmail.com)
+
+3. Install the dependencies:
+  In the project directory, run:
+  `cd api`
    `npm install`
 
-4. Configuração do MongoDB:
-   Certifique-se de que o MongoDB está rodando localmente ou ajuste a URL de conexão na variável de ambiente.
+4. MongoDB Configuration:
+  Make sure MongoDB is running locally, or adjust the connection URL in the environment variable.
 
-5. Inicie o servidor:
+5. Start the server:
+  To start the NestJS server, run:
+  `npm run start`
 
-Para iniciar o servidor NestJS, execute:
-`npm run start`
+The API will be available at: http://localhost:3000
 
-A API estará disponível em: http://localhost:3000
+### API Routes
 
-### Rotas da API
+1. Authentication
 
-1. Autenticação
-
-- _POST /auth/login_: Rota para realizar login e obter o token JWT. Use o seguinte payload para autenticar:
+- _POST /auth/login_: Route to log in and obtain the JWT token. Use the following payload to authenticate:
 
 ```
 {
-"username": "usuario",
-"password": "senha123"
+"username": "userlogin",
+"password": "password123"
 }
 ```
 
-Exemplo de resposta em caso de sucesso:
+Example response on success:
 
 ```
 {
@@ -64,30 +65,30 @@ Exemplo de resposta em caso de sucesso:
 }
 ```
 
-2. Contatos (protegidas por JWT)
-   Para acessar as rotas abaixo, você deve incluir o token JWT no header Authorization como Bearer <token>.
+2. Contacts (protected by JWT)
+   To access the routes below, you must include the JWT token in the Authorization header as Bearer token.
 
-- _GET /contatos_: Retorna a lista de todos os contatos cadastrados.
-- _POST /contatos_: Adiciona um novo contato. Exemplo de payload:
-
-```
-{
-"nome": "João",
-"sobrenome": "Silva",
-"telefone": "123456789",
-"dataNascimento": "1990-01-01",
-"endereco": "Rua ABC, 123",
-"email": "joao.silva@example.com"
-}
-```
-
-- _PUT /contatos/:id_: Atualiza um contato existente com base no ID informado. Exemplo de payload:
+- _GET /contacts_: Returns the list of all registered contacts.
+- _POST /contacts_: Adds a new contact. Example payload:
 
 ```
 {
-"nome": "João",
-"telefone": "987654321"
+"name": "Ana",
+"surname": "Smith",
+"phone": "123456789",
+"birthDate": "1990-01-01",
+"address": "ABC street, 123",
+"email": "ana.smith@example.com"
 }
 ```
 
-- _DELETE /contatos/:id_: Deleta um contato existente com base no ID informado.
+- _PUT /contacts/:id_: Updates an existing contact based on the provided ID. Example payload:
+
+```
+{
+"name": "Ana",
+"phone": "987654321"
+}
+```
+
+- _DELETE /contacts/:id_: Deletes an existing contact based on the provided ID.

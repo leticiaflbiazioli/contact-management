@@ -10,12 +10,12 @@ export class ContactsService {
   ) {}
 
   async findAll(): Promise<Contact[]> {
-    return this.contactModel.find().exec(); // Retorna todos os contatos
+    return this.contactModel.find().exec(); // Returns all contacts
   }
 
   async create(contact: Contact): Promise<Contact> {
     const newContact = new this.contactModel(contact);
-    return newContact.save(); // Salva o novo contato
+    return newContact.save(); // Save the new contact
   }
 
   async update(id: string, updatedContact: Partial<Contact>): Promise<Contact> {
@@ -23,10 +23,10 @@ export class ContactsService {
       .findByIdAndUpdate(id, updatedContact, {
         new: true,
       })
-      .exec(); // Atualiza o contato existente
+      .exec(); // Update existing contact
   }
 
   async delete(id: string): Promise<Contact> {
-    return this.contactModel.findByIdAndDelete(id).exec(); // Deleta o contato pelo ID
+    return this.contactModel.findByIdAndDelete(id).exec(); // Delete the contact
   }
 }
